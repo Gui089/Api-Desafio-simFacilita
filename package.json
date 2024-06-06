@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrations": "node src/db/postgres/migrations/exec.js"
+    "migrations": "node src/db/postgres/migrations/exec.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

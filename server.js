@@ -1,6 +1,7 @@
 import express from 'express';
 import { CreateProductController } from './src/controllers/create-product.js';
 import { DeleteProductController } from './src/controllers/delete-product.js';
+import { PostgresHelper } from './src/db/postgres/helper.js';
 
 const PORT = process.env.PORT || 3002;
 
@@ -41,6 +42,21 @@ app.delete("/product/:id", async (req, res) => {
         res.status(500).json({error: 'Internal server error'});
     }
 });
+
+app.get("/product", async (req, res) => {
+    const product = await PostgresHelper.query('SELECT * FROM products');
+
+    res.status(200).json(product);
+});
+
+app.get("/product/:product_name", async (req,res) => {
+    const product = await PostgresHelper.query('SELECT * FROM products WHERE product_name = $1', [
+        req.params.product_name
+    ]);
+
+    res.status(200).json(product);
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`);
