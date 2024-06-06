@@ -1,6 +1,6 @@
-import { PostgresHelper } from "../../db/postgres/helper";
+import { PostgresHelper } from "../../db/postgres/helper.js";
 
-export class PostgresCreateProduct {
+export class PostgresCreateProductRepository {
     async execute(createProductParams) {
         await PostgresHelper.query(
             'INSERT INTO products(id, product_name, price, quantity, photo,description, status) VALUES ($1, $2, $3, $4, $5, $6, $7)',
