@@ -1,5 +1,6 @@
 import express from 'express';
 import { CreateProductController } from './src/controllers/create-product.js';
+import { DeleteProductController } from './src/controllers/delete-product.js';
 
 const PORT = process.env.PORT || 3002;
 
@@ -24,6 +25,20 @@ app.post("/product", async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.delete("/product/:id", async (req, res) => {
+
+    const deleteProductController = new DeleteProductController();
+
+    try {
+        const response = await deleteProductController.execute(req);
+
+        res.status(response.statusCode).json(response.body);
+
+    } catch(error ){
+        res.status(500).json({error: 'Internal server error'});
     }
 });
 

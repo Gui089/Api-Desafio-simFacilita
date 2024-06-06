@@ -4,3 +4,10 @@ export const created = (body) => {
         body,
     }
 }
+
+export const deleteItem = (body) => {
+    return {
+        statusCode:200,
+        body,
+    }
+}
