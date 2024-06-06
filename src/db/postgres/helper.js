@@ -1,12 +1,15 @@
 import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const {Pool} = pg;
 
 export const pool = new Pool({
-    user:'guilherme',
-    password:'321654',
-    port:5435,
-    database:'desafio'
+    user:process.env.POSTGRES_USER,
+    password:process.env.POSTGRES_USER_PASSWORD,
+    port:process.env.POSTGRES_PORT,
+    database:process.env.POSTGRES_DB
 });
 
 
