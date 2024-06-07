@@ -2,11 +2,15 @@ import express from 'express';
 import { CreateProductController } from './src/controllers/create-product.js';
 import { DeleteProductController } from './src/controllers/delete-product.js';
 import { PostgresHelper } from './src/db/postgres/helper.js';
+import cors from 'cors';
+
+
 
 const PORT = process.env.PORT || 3002;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
