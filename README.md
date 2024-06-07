@@ -41,4 +41,4 @@ npm run dev ou yarn dev
 
 ### acessar o projeto
 
-http:localhost:3002/products
+http://localhost:3002/products
